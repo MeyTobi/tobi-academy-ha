@@ -1,0 +1,32 @@
+name: T.O.B.I. Academy
+version: 0.2.0
+slug: tobi_academy
+description: Private Mission Control for POLADIUM schedule and study data
+url: https://github.com/MeyTobi/tobi-academy-ha
+image: ghcr.io/meytobi/tobi-academy
+startup: application
+boot: auto
+stage: experimental
+init: false
+arch:
+  - amd64
+  - aarch64
+ingress: true
+ingress_port: 3000
+ingress_stream: true
+panel_icon: mdi:shield-account-outline
+panel_title: T.O.B.I. Academy
+panel_admin: true
+homeassistant_api: true
+backup: cold
+watchdog: http://[HOST]:[PORT:3000]/api/health
+ports:
+  3000/tcp: null
+ports_description:
+  3000/tcp: Direct web access; not required for Home Assistant Ingress
+options:
+  sync_interval_minutes: 30
+  timezone: Europe/Berlin
+schema:
+  sync_interval_minutes: int(15,360)
+  timezone: str
