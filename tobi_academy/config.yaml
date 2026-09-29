@@ -1,5 +1,5 @@
 name: T.O.B.I. Academy
-version: 0.2.0
+version: 0.3.0
 slug: tobi_academy
 description: Private Mission Control for POLADIUM schedule and study data
 url: https://github.com/MeyTobi/tobi-academy-ha
@@ -30,3 +30,4 @@ options:
 schema:
   sync_interval_minutes: int(15,360)
   timezone: str
+  import_token: password?
