@@ -14,7 +14,10 @@ The database is created automatically. No POLADIUM password is requested or stor
 
 - `sync_interval_minutes`: Refresh interval for an active portal session. Minimum 15 minutes.
 - `timezone`: Time zone for timetable calculations. Defaults to `Europe/Berlin`.
+- `import_token`: Optional private token for pairing the iPhone app. Use at least 24 random characters and store the same value once in the iPhone Keychain through the Academy settings. When omitted, the backend creates and persists a local token automatically.
 
 ## Security model
 
 Home Assistant Ingress handles access authentication. The connector only reuses a portal session transferred explicitly from the native Academy client. It never submits a username or password, restricts requests to allowlisted POLADIUM endpoints, encrypts the session at rest, and stops when the session expires.
+
+The native iPhone app performs a one-time, explicit session handoff after a normal POLADIUM login and opening the timetable. For private remote access, expose port `3000/tcp` only on the Home Assistant host and proxy it through a private Tailscale Service. Do not enable Tailscale Funnel.
